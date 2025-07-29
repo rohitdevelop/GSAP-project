@@ -6,6 +6,7 @@ import About from "./Components/About";
 import Program from "./Components/Program";
 import Trainer from "./Components/Trainer";
 import Contact from "./Components/Contact";
+import Footer from "./Components/Footer";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
+      <Footer/>
     </>
   );
 };
