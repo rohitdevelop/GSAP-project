@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react"; // You can install lucide-react or use any icon library
-
+import { CgGym } from "react-icons/cg";
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -11,9 +11,13 @@ const Navbar = () => {
     <nav className="bg-gradient-to-l to-black from-red-950 text-white px-6 py-4 shadow-lg fixed top-0 w-full z-50">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Logo */}
-        <Link to="/" className="text-2xl font-bold text-yellow-400 tracking-wide">
-          Fit<span className="text-white">Zone</span>
-        </Link>
+       <div className="flex justify-center items-center">
+  <Link to="/" className="flex items-center gap-2 text-2xl font-bold text-yellow-400 tracking-wide">
+    <CgGym className="text-3xl" />
+    Fit<span className="text-white">Zone</span>
+  </Link>
+</div>
+
 
         {/* Desktop Nav Links */}
         <ul className="hidden md:flex gap-8 text-lg font-medium">
