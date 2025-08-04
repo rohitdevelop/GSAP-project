@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FaDumbbell, FaHeartbeat, FaRunning, FaAppleAlt } from "react-icons/fa";
+import { GsapHome } from "./GsapHome";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -29,46 +31,8 @@ const gymBenefits = [
 ];
 
 const Home = () => {
-  useEffect(() => {
-    gsap.from(".text-area", {
-      x: -100,
-      opacity: 0,
-      duration: 1,
-      scrollTrigger: {
-        trigger: ".text-area",
-        start: "top 80%",
-      },
-    });
-
-    gsap.from(".hero-img", {
-      x: 100,
-      opacity: 0,
-      duration: 1.2,
-      scrollTrigger: {
-        trigger: ".hero-img",
-        start: "top 80%",
-      },
-    });
-
-    gsap.from(".cta-buttons", {
-      scale: 0,
-      opacity: 0,
-      duration: 0.8,
-      scrollTrigger: {
-        trigger: ".cta-buttons",
-        start: "top 80%",
-      },
-    });
-
-    gsap.from(".BoxCard", {
-      y: 100,
-      opacity: 0,
-      duration: 1.2,
-      scrollTrigger: {
-        trigger: ".BoxCard",
-        start: "top 80%",
-      },
-    });
+  useGSAP(() => {
+    GsapHome(); // 🔁 Animation logic from another file
   }, []);
 
   return (
@@ -92,12 +56,14 @@ const Home = () => {
             </h1>
 
             <p className="text-xl md:text-2xl text-gray-300 mb-4 leading-relaxed">
-              Unlock your potential with cutting-edge equipment, expert trainers,
-              and a community that supports your journey.
+              Unlock your potential with cutting-edge equipment, expert
+              trainers, and a community that supports your journey.
             </p>
             <p className="text-lg text-gray-400 mb-8">
-              Your transformation starts <span className="text-orange-500 font-bold">today</span>. 
-              Change your body, mindset, and your <span className="text-orange-500 font-bold">life</span>.
+              Your transformation starts{" "}
+              <span className="text-orange-500 font-bold">today</span>. Change
+              your body, mindset, and your{" "}
+              <span className="text-orange-500 font-bold">life</span>.
             </p>
 
             <div className="cta-buttons flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
@@ -132,7 +98,9 @@ const Home = () => {
                   {item.icon}
                 </div>
               </div>
-              <h3 className="text-2xl font-bold mb-4 text-white">{item.title}</h3>
+              <h3 className="text-2xl font-bold mb-4 text-white">
+                {item.title}
+              </h3>
               <p className="text-gray-400 leading-relaxed">{item.desc}</p>
             </div>
           ))}
@@ -140,32 +108,61 @@ const Home = () => {
       </div>
 
       {/* Info Image + Text Section */}
-      <div className="BoxCard w-full py-16 px-6 bg-gradient-to-bl from-black to-red-950 text-white">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10">
+      <div className="BoxCard w-full py-20 px-6 md:px-64 bg-gradient-to-bl from-black to-red-950 text-white">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-14">
           {/* Left: Overlapping Images */}
           <div className="relative flex flex-col gap-6">
             <img
-              src="https://img.freepik.com/premium-photo/fit-girl-doing-squats-gym_900958-25421.jpg"
+              src="https://wallpapercave.com/wp/wp8997282.jpg"
               alt="workout"
-              className="w-52 h-52 object-cover rounded-xl shadow-lg relative z-20"
+              className="w-64 h-64 object-cover rounded-xl shadow-2xl relative z-20"
             />
             <img
-              src="https://img.freepik.com/premium-photo/gym-training-hardcore-concept-muscular-man-doing-exercise_1562-7343.jpg"
+              src="https://images.unsplash.com/photo-1611672585731-fa10603fb9e0?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Z3ltJTIwZ3V5fGVufDB8fDB8fHww"
               alt="strength"
-              className="w-52 h-52 object-cover rounded-xl shadow-lg -mt-10 ml-10 relative z-10"
+              className="w-64 h-64 object-cover rounded-xl shadow-2xl -mt-12 ml-12 relative z-10"
             />
           </div>
 
-          {/* Right: Text */}
-          <div className="text-white text-center md:text-left">
-            <h2 className="text-3xl font-bold mb-4">Give Shape to Your Body</h2>
-            <p className="max-w-xl text-lg text-gray-300">
+          {/* Right: Text and Stats */}
+          <div className="text-white text-center md:text-left space-y-6">
+            <h2 className="text-4xl font-extrabold mb-2">
+              Give Shape to Your Body
+            </h2>
+            <p className="max-w-2xl text-lg text-gray-300">
               Discover a healthier, stronger version of yourself. Our gym
               provides expert guidance, world-class equipment, and the
-              motivation you need to succeed.
+              motivation you need to succeed. Whether you're just starting or
+              pushing your limits, we’ve got your back.
             </p>
+
+            {/* Stats Section */}
+            <div className="flex flex-wrap justify-center md:justify-start gap-8 pt-4">
+              <div className="text-center">
+                <h3 className="text-3xl font-bold text-red-500">100+</h3>
+                <p className="text-sm text-gray-400">
+                  Heart Attack Recovery Cases
+                </p>
+              </div>
+              <div className="text-center">
+                <h3 className="text-3xl font-bold text-red-500">250+</h3>
+                <p className="text-sm text-gray-400">Strong Transformations</p>
+              </div>
+              <div className="text-center">
+                <h3 className="text-3xl font-bold text-red-500">50+</h3>
+                <p className="text-sm text-gray-400">Certified Trainers</p>
+              </div>
+              <div className="text-center">
+                <h3 className="text-3xl font-bold text-red-500">1K+</h3>
+                <p className="text-sm text-gray-400">Happy Members</p>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
+
+      <div className="w-full h-screen bg-gradient-to-bl from-black to-red-950 text-white">
+
       </div>
     </>
   );
