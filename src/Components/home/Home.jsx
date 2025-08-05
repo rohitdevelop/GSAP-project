@@ -88,24 +88,23 @@ const Home = () => {
 
         {/* Benefits Section */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-6 py-10">
-          {gymBenefits.map((item, index) => (
-            <div
-              key={index}
-              className="card-hover bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl shadow-xl border border-gray-700 text-center transition-all duration-500 hover:border-orange-500/50"
-            >
-              <div className="mb-6 flex justify-center transform hover:scale-110 transition-transform duration-300">
-                <div className="bg-orange-500/20 p-4 rounded-full">
-                  {item.icon}
-                </div>
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-white">
-                {item.title}
-              </h3>
-              <p className="text-gray-400 leading-relaxed">{item.desc}</p>
-            </div>
-          ))}
+  {gymBenefits.map((item, index) => (
+    <div
+      key={index}
+      className="group bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl shadow-xl text-center transform transition duration-500 hover:scale-95 hover:backdrop-blur-sm hover:bg-opacity-90"
+    >
+      <div className="mb-6 flex justify-center transition-transform duration-300 group-hover:scale-110">
+        <div className="bg-orange-500/20 p-4 rounded-full">
+          {item.icon}
         </div>
       </div>
+      <h3 className="text-2xl font-bold mb-4 text-white">{item.title}</h3>
+      <p className="text-gray-400 leading-relaxed">{item.desc}</p>
+    </div>
+  ))}
+</div>
+</div>
+
 
       {/* Info Image + Text Section */}
       <div className="BoxCard w-full py-20 px-6 md:px-64 bg-gradient-to-bl from-black to-red-950 text-white">
@@ -115,12 +114,12 @@ const Home = () => {
             <img
               src="https://wallpapercave.com/wp/wp8997282.jpg"
               alt="workout"
-              className="w-64 h-64 object-cover rounded-xl shadow-2xl relative z-20"
+              className="img1 w-64 h-64 object-cover rounded-xl shadow-2xl relative z-20"
             />
             <img
               src="https://images.unsplash.com/photo-1611672585731-fa10603fb9e0?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Z3ltJTIwZ3V5fGVufDB8fDB8fHww"
               alt="strength"
-              className="w-64 h-64 object-cover rounded-xl shadow-2xl -mt-12 ml-12 relative z-10"
+              className="img2 w-64 h-64 object-cover rounded-xl shadow-2xl -mt-12 ml-12 relative z-10"
             />
           </div>
 
@@ -161,9 +160,26 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="w-full h-screen bg-gradient-to-bl from-black to-red-950 text-white">
+      <div className="w-full bg-black text-white overflow-hidden">
+  {/* IMG 3 Section */}
+  <div className="relative w-full h-screen">
+    <img
+      src="https://images.stockcake.com/public/7/0/0/700ee260-f630-45ef-828b-aa39ef262fc7_large/muscular-man-flexing-stockcake.jpg"
+      alt="img3"
+      className="img3 w-full h-full object-cover"
+    />
+  </div>
 
-      </div>
+  {/* IMG 4 Section */}
+  <div className="relative w-full h-screen">
+    <img
+      src="https://images.stockcake.com/public/b/d/d/bdd260db-a0e7-4d3b-903a-454527ee68cc_large/muscular-body-performance-stockcake.jpg"
+      alt="img4"
+      className="img4 w-full h-full object-cover"
+    />
+  </div>
+</div>
+
     </>
   );
 };
