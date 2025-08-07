@@ -160,26 +160,74 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="w-full bg-black text-white overflow-hidden">
-  {/* IMG 3 Section */}
-  <div className="relative w-full h-screen">
-    <img
-      src="https://images.stockcake.com/public/7/0/0/700ee260-f630-45ef-828b-aa39ef262fc7_large/muscular-man-flexing-stockcake.jpg"
-      alt="img3"
-      className="img3 w-full h-full object-cover"
-    />
-  </div>
+      <div className="w-full bg-gradient-to-bl from-black to-red-950 text-white py-16 px-6">
+  <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-red-600">
+    Meet the Legends of Bodybuilding 💪
+  </h2>
 
-  {/* IMG 4 Section */}
-  <div className="relative w-full h-screen">
-    <img
-      src="https://images.stockcake.com/public/b/d/d/bdd260db-a0e7-4d3b-903a-454527ee68cc_large/muscular-body-performance-stockcake.jpg"
-      alt="img4"
-      className="img4 w-full h-full object-cover"
-    />
+  <div className="grid grid-cols-3 gap-8">
+
+    {/* Row 1 */}
+    <div className="col-start-1">
+      <img
+        src="https://images.stockcake.com/public/7/0/0/700ee260-f630-45ef-828b-aa39ef262fc7_large/muscular-man-flexing-stockcake.jpg"
+        alt="Arnold Schwarzenegger"
+        className="img3 w-full h-[400px] object-cover rounded-xl shadow-lg"
+      />
+    </div>
+    <div></div>
+    <div className="col-start-3">
+      <img
+        src="https://images.stockcake.com/public/b/d/d/bdd260db-a0e7-4d3b-903a-454527ee68cc_large/muscular-body-performance-stockcake.jpg"
+        alt="Ronnie Coleman"
+        className="img4 w-full h-[400px] object-cover rounded-xl shadow-lg"
+      />
+    </div>
+
+    {/* Row 2 */}
+    <div></div>
+    <div className="col-start-2">
+      <img
+        src="https://images.stockcake.com/public/e/e/7/ee7d4cf1-943b-47b9-88a1-fadd327107a4_large/muscular-man-flexing-stockcake.jpg"
+        alt="Jay Cutler"
+        className="img5 w-full h-[400px] object-cover rounded-xl shadow-lg"
+      />
+    </div>
+    <div></div>
+
+    {/* Row 3 */}
+    <div className="col-start-1">
+      <img
+        src="https://repone.de/wp-content/uploads/2025/01/hunter-labrada-bodybuilder-trt.png"
+        alt="Hunter Labrada"
+        className="img6 w-full h-[400px] object-cover rounded-xl shadow-lg"
+      />
+    </div>
+    <div></div>
+    <div className="col-start-3">
+      <img
+        src="https://images.stockcake.com/public/e/e/7/ee7d4cf1-943b-47b9-88a1-fadd327107a4_large/muscular-man-flexing-stockcake.jpg"
+        alt="Phil Heath"
+        className="img7 w-full h-[400px] object-cover rounded-xl shadow-lg"
+      />
+    </div>
+
+    {/* Row 4 */}
+    <div></div>
+    <div className="col-start-2">
+      <img
+        src="https://images.stockcake.com/public/7/0/0/700ee260-f630-45ef-828b-aa39ef262fc7_large/muscular-man-flexing-stockcake.jpg"
+        alt="Dorian Yates"
+        className="img8 w-full h-[400px] object-cover rounded-xl shadow-lg"
+      />
+    </div>
+    <div></div>
   </div>
 </div>
 
+<div id="HEADPAGE" className="HEADPAGE   bg-gradient-to-bl from-black to-red-950 text-white">
+<h1 className='text-[40vw] text-white font-bold'>FITNESSMOTIVATION</h1>
+</div>
     </>
   );
 };

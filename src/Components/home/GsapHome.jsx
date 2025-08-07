@@ -4,123 +4,153 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export const GsapHome = () => {
-  // Animate text area from left
-  gsap.from(".text-area", {
-    x: -100,
-    opacity: 0,
-    duration: 1,
-    ease: "power2.out",
-    scrollTrigger: {
-      trigger: ".text-area",
-      scroller: "body",
-      start: "top 80%",
-      toggleActions: "play none none reset",
-    },
-  });
+  // === REUSABLE ANIMATION FUNCTION ===
+  const animateFrom = (selector, {
+    x = 0,
+    y = 0,
+    scale = 1,
+    rotate = 0,
+    duration = 1.2,
+    ease = "power2.out",
+    scrub = false,
+    pin = false,
+    stagger = 0,
+    start = "top 80%",
+    end = "top 40%",
+    markers = false,
+    toggleActions = "play none none reset"
+  }) => {
+    gsap.from(selector, {
+      opacity: 0,
+      x,
+      y,
+      scale,
+      rotate,
+      duration,
+      ease,
+      stagger,
+      scrollTrigger: {
+        trigger: selector,
+        start,
+        end,
+        scrub,
+        pin,
+        toggleActions,
+        markers
+      },
+    });
+  };
 
-  // Animate hero image from right
-  gsap.from(".hero-img", {
-    x: 100,
-    opacity: 0,
-    duration: 1.2,
-    ease: "power2.out",
-    scrollTrigger: {
-      trigger: ".hero-img",
-      scroller: "body",
-      start: "top 80%",
-      toggleActions: "play none none reset",
-    },
-  });
+  // === ZOOM OUT + FADE PINNED ===
+  const fadeZoomPin = (selector) => {
+    gsap.fromTo(
+      selector,
+      { scale: 1, opacity: 1 },
+      {
+        scale: 1.3,
+        opacity: 0,
+        duration: 2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: selector,
+          start: "top center",
+          end: "bottom center",
+          scrub: true,
+          pin: true,
+        },
+      }
+    );
+  };
 
-  // CTA buttons scale in
-  gsap.from(".cta-buttons", {
+  // === ANIMATION CALLS ===
+
+  animateFrom(".text-area", { x: -100, duration: 1 });
+  animateFrom(".hero-img", { x: 100, duration: 1.2 });
+  animateFrom(".cta-buttons", {
     scale: 0.5,
-    opacity: 0,
-    duration: 1,
     ease: "back.out(1.7)",
-    scrollTrigger: {
-      trigger: ".cta-buttons",
-      scroller: "body",
-      start: "top 85%",
-      toggleActions: "play none none reset",
-    },
+    duration: 1,
   });
 
-  // BoxCard section slides up smoothly
-  gsap.from(".BoxCard", {
+  animateFrom(".BoxCard", {
     y: 100,
-    opacity: 0,
-    duration: 1.2,
-    ease: "power2.out",
-    scrollTrigger: {
-      trigger: ".BoxCard",
-      scroller: "body",
-      start: "top 60%",
-      scrub: true,
-    },
+    scrub: true,
+    start: "top 60%",
   });
 
-  // Left image scrolls in from right
-  gsap.from(".img1", {
-    x: 100,
-    opacity: 0,
-    duration: 1.2,
-    ease: "power3.out",
-    scrollTrigger: {
-      trigger: ".img1",
-      scroller: "body",
-      start: "top 60%",
-      scrub: true,
-    },
+  animateFrom(".img1", { x: 100, scrub: true, start: "top 60%" });
+  animateFrom(".img2", { y: 100, scrub: true, start: "top 60%" });
+
+  fadeZoomPin(".img3");
+  fadeZoomPin(".img4");
+
+  // ✅ Zoom + Fade + Pin on img5
+  gsap.fromTo(
+    ".img5",
+    { scale: 1, opacity: 1 },
+    {
+      scale: 1.4,
+      opacity: 0,
+      duration: 2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".img5", // ✅ Corrected
+        start: "top center",
+        end: "bottom center",
+        scrub: true,
+        pin: true,
+      },
+    }
+  );
+
+  animateFrom(".img6", {
+    y: 150,
+    scrub: true,
+    duration: 1.5,
   });
 
-  // Right image scrolls in from bottom
-  gsap.from(".img2", {
-    y: 100,
-    opacity: 0,
-    duration: 1.2,
-    ease: "power3.out",
-    scrollTrigger: {
-      trigger: ".img2",
-      scroller: "body",
-      start: "top 60%",
-      scrub: true,
-    },
+  animateFrom(".img7", {
+    x: -100,
+    scrub: true,
+    duration: 1.5,
   });
-  // Image 3 Zoom Out
- // Animate img3 when fully on screen
-gsap.fromTo(
-  ".img3",
-  { scale: 1, opacity: 1 },
-  {
-    scale: 1.3,
-    opacity: 0,
+
+  animateFrom(".img8", {
+    scale: 0.95,
+    scrub: true,
+    duration: 1.5,
+  });
+
+  animateFrom(".feature-card", {
+    y: 50,
+    stagger: 0.2,
+    duration: 1,
+    ease: "power1.out",
+    start: "top 85%",
+  });
+
+  animateFrom(".rotate-img", {
+    rotate: 360,
+    scale: 0.8,
     duration: 2,
-    ease: "power3.out",
-    scrollTrigger: {
-      trigger: ".img3",
-      start: "top bottom",    // Top of img3 hits bottom of viewport
-      end: "bottom top",      // When img3 scrolls out
-      scrub: true,
-      pin: true,
-      markers: true,          // Remove in production
-    },
-  }
-);
-
-// Fade in img4 smoothly
-gsap.from(".img4", {
-  opacity: 0,
-  scale: 1.1,
-  duration: 2,
-  ease: "power2.out",
-  scrollTrigger: {
-    trigger: ".img4",
+    scrub: true,
     start: "top 90%",
     end: "top 30%",
-    scrub: true,
-    markers: true,
-  },
-});
+  });
 
+  gsap.to("#HEADPAGE h1", {
+ xPercent: -320, 
+      scrollTrigger: {
+      trigger: "#HEADPAGE",
+      scroller:"body",
+      start:"top 0%",
+      end:"top -150%",
+       scrub: 2,
+      pin: true,
+     },
+  });
 };
+
+
+
+//  
